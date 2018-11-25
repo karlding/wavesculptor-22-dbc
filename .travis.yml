@@ -1,0 +1,18 @@
+language: python
+
+dist: trusty
+
+# Enable "Build pushes" and "Build pull requests" in Travis CI
+# - Pull Requests will always be built
+# - Only build pushes to master
+branches:
+  only:
+    - master
+
+before_script:
+  # eerimoq/cantools
+  - pip install cantools
+
+# For now, we're just testing that we can properly read and decode the DBC.
+script:
+  - cantools dump dbc/wavesculptor_22.dbc
